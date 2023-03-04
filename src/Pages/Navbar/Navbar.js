@@ -1,10 +1,13 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
 import "./Navbar.css";
+import { useStateValue } from "../../stateProvider";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
 function Navbar() {  
+  // eslint-disable-next-line 
+  const [{ basket, user }, dispatch] = useStateValue();
   return (
     <>
     <div className="header">
@@ -46,7 +49,7 @@ function Navbar() {
           <div className="header__optionBasket">
             <ShoppingBasketIcon />
             <span className="header__optionLineTwo header__basketCount">
-              0
+              {basket?.length}
             </span>
           </div>
         
